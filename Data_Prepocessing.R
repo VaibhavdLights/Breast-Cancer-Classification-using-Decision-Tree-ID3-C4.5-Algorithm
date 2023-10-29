@@ -69,11 +69,12 @@ print(summary(test_data))
 # ... (Previous code for data pre-processing)
 
 # Store Cleaned Data in a New CSV File
-write.csv(dataset, "cleaned_data_1.csv", row.names = FALSE)
+write.csv(dataset, "cleaned_data.csv", row.names = FALSE)
 
 # Check if the file was successfully created
 if ("cleaned_data.csv" %in% list.files()) {
-  cat("Cleaned data has been saved as 'cleaned_data_1.csv' in the working directory.\n")
+  cat("Cleaned data has been saved as 'cleaned_data.csv' in the working directory.\n")
 } else {
-  cat("Error: Could not save the cleaned_data_1 to 'cleaned_data_1.csv'.\n")
+  cat("Error: Could not save the cleaned_data to 'cleaned_data.csv'.\n")
 }
+
