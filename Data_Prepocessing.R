@@ -1,7 +1,3 @@
-# Load necessary libraries
-library(caret)
-library(dplyr)
-
 # Load a sample dataset (use your own dataset or replace with one from your source)
 data <- read.csv("BreastCancer.csv")
 dataset <- data
