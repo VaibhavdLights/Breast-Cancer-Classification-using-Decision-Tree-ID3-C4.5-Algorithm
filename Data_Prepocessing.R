@@ -44,12 +44,6 @@ dataset <- handle_outliers(dataset, 'Normal.nucleoli', z_threshold = 2)
 dataset <- handle_outliers(dataset, 'Mitoses', z_threshold = 2)
 
 
-# Data Encoding (One-Hot Encoding for Categorical Variables)
-# Suppose 'cyl' is a categorical variable
-# if ('cyl' %in% colnames(dataset)) {
-#  dataset <- model.matrix(~., data = dataset)
-# }
-
 
 # Data Splitting (Training and Test Sets)
 set.seed(123)  # for reproducibility
