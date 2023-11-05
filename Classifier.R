@@ -30,3 +30,29 @@ predictions <- predict(c5.0_model, newdata = test_data)
 # Step 9: Evaluate the model's performance
 accuracy <- sum(predictions == test_data$Class) / nrow(test_data)
 cat("Accuracy:", accuracy, "\n")
+
+# Load necessary packages for performance evaluation
+library(caret)
+library(e1071)
+
+# Predict on the test data
+predictions <- predict(c5.0_model, newdata = test_data)
+
+# Create a confusion matrix
+confusion_matrix <- confusionMatrix(predictions, test_data$Class)
+
+# Extract the relevant performance measures
+accuracy <- confusion_matrix$overall["Accuracy"]
+f1_score <- confusion_matrix$byClass["F1"]
+precision <- confusion_matrix$byClass["Pos Pred Value"]
+recall <- confusion_matrix$byClass["Sensitivity"]
+
+# Print the results
+cat("Confusion Matrix:\n")
+print(confusion_matrix$table)
+
+cat("\nPredictive Accuracy:", accuracy, "\n")
+cat("F1-Score:", f1_score, "\n")
+cat("Precision:", precision, "\n")
+cat("Recall (Sensitivity):", recall, "\n")
+
