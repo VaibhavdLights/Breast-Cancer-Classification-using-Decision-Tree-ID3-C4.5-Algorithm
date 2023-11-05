@@ -20,7 +20,7 @@ train_data <- breast_cancer_data[train_indices, ]
 test_data <- breast_cancer_data[-train_indices, ]
 
 #Diiferent K values
-k_values <- c(5, 10, 15)
+k_values <- c(3, 4, 7)
 
 # Create an empty list to store ROC curve data
 roc_data <- list()
@@ -48,7 +48,7 @@ for (k in k_values) {
 
 # Plot ROC curves for different k values
 par(mfrow = c(1, 1))  # Reset the plotting layout
-plot(roc_data[["5"]], col = "red", main = "ROC Curves for Different Values of k", xlab = "False Positive Rate", ylab = "True Positive Rate")
-lines(roc_data[["10"]], col = "blue")
-lines(roc_data[["15"]], col = "green")
-legend("bottomright", legend = c("k = 5", "k = 10", "k = 15"), col = c("red", "blue", "green"), lty = 1)
+plot(roc_data[["3"]], col = "red", main = "ROC Curves for Different Values of k", xlab = "False Positive Rate", ylab = "True Positive Rate")
+lines(roc_data[["4"]], col = "blue")
+lines(roc_data[["7"]], col = "green")
+legend("bottomright", legend = c("k = 3", "k = 4", "k = 7"), col = c("red", "blue", "green"), lty = 1)
