@@ -74,6 +74,9 @@ if ("BreastCancerCleaned.csv" %in% list.files()) {
 #Build the C5.0 decision tree model - uses ID3 C4.5 algorithm
 c5.0_model <- C5.0(Class ~ ., data = train_data)
 
+#plotting the model
+plot(c5.0_model)
+
 #Summarizing the model we have created
 summary(c5.0_model)
 
@@ -94,6 +97,38 @@ cat("Accuracy:", accuracy, "\n")
 
 #Creating a confusion matrix
 conf_mat <- confusionMatrix(predictions, test_data$Class)
+
+#Way I: Visualize the confusion matrix using four fold plot
+fourfoldplot(as.table(conf_mat$table),color=c("deeppink","darkturquoise"),main = "Confusion Matrix")
+
+#Way II: Visualize the confusion matrix using traditional 4 rectangle plot 
+plot_conf_mat_using_rect <- function(confusion_matrix) {
+  
+  par(mar=c(2,2,2,2))
+  plot(c(100, 345), c(300, 450), type = "n", xlab="", ylab="", xaxt='n', yaxt='n')
+  
+  # create the matrix 
+  rect(150, 430, 240, 370, col='darkturquoise')
+  text(195, 435, 'Class 0', cex=1.2)
+  rect(250, 430, 340, 370, col='deeppink')
+  text(295, 435, 'Class 1', cex=1.2)
+  text(125, 370, 'Predicted', cex=1.3, srt=90, font=2)
+  text(245, 450, 'Target', cex=1.3, font=2)
+  rect(150, 305, 240, 365, col='deeppink')
+  rect(250, 305, 340, 365, col='darkturquoise')
+  text(140, 400, 'Class 0', cex=1.2, srt=90)
+  text(140, 335, 'Class 1', cex=1.2, srt=90)
+  
+  # add in the confusion_matrix results 
+  res <- as.numeric(confusion_matrix$table)
+  text(195, 400, res[1], cex=1.6, font=2, col='azure')
+  text(195, 335, res[2], cex=1.6, font=2, col='azure')
+  text(295, 400, res[3], cex=1.6, font=2, col='azure')
+  text(295, 335, res[4], cex=1.6, font=2, col='azure')
+}
+
+#calling custom function to visualize confusion matrix
+plot_conf_mat_using_rect(conf_mat)
 
 # Extract the relevant performance measures
 accuracy <- conf_mat$overall["Accuracy"]
