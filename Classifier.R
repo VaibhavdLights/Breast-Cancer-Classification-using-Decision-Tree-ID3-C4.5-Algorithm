@@ -10,7 +10,7 @@ str(breast_cancer_data)
 # Step 4: Ensure that the "Class" column is a factor
 breast_cancer_data$Class <- as.factor(breast_cancer_data$Class)
 
-# Step 5: Split the dataset into training and testing sets
+# Step 5: Split the dataset into training and testing sets 
 set.seed(123)
 train_indices <- sample(1:nrow(breast_cancer_data), 0.7 * nrow(breast_cancer_data))  # 70% for training
 train_data <- breast_cancer_data[train_indices, ]
