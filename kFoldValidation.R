@@ -7,7 +7,7 @@ library(pROC)
 breast_cancer_data <- read.csv("BreastCancerCleaned.csv")
 
 # Ensure that the "Class" column is a factor
-breast_cancer_data$Class <- as.factor(breast_cancer_data$Class)
+breast_cancer_data$Class <- as.factor(breast_cancer_data$Class) 
 
 # Define the target variable (Class) and the features
 target_variable <- "Class"
